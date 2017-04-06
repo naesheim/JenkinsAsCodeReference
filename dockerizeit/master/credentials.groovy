@@ -46,4 +46,3 @@ properties.credentials.each {
       break
   }
 }
-
