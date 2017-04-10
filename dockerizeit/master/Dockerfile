@@ -1,5 +1,11 @@
 FROM jenkins:2.32.2-alpine
 
+USER root
+RUN apk update && apk add curl python && curl -o docker-1.12.1.tgz https://get.docker.com/builds/Linux/x86_64/docker-1.12.1.tgz && tar zxvf docker-1.12.1.tgz && mv docker/* /usr/bin/ && rm -rf docker-*
+RUN curl -o wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-150.0.0-linux-x86_64.tar.gz \
+	&& tar -xvzf google-cloud-sdk-150.0.0-linux-x86_64.tar.gz \
+	&& rm google-cloud-sdk-150.0.0-linux-x86_64.tar.gz \
+	&& sh google-cloud-sdk/install.sh
 # Add support for proxies.
 # Values should be passed as build args
 # http://docs.docker.com/engine/reference/builder/#arg

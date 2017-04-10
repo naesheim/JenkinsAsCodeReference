@@ -19,7 +19,9 @@ services:
       - "8080:8080"
       - "50000:50000"
     volumes:
-      - $HOME/.ssh:/var/jenkins_home/.ssh
-      - $HOME/jenkins-backup/jobs:/var/jenkins_home/jobs
-      - $HOME/jenkins-backup/userContent:/var/jenkins_home/userContent
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/docker:/var/lib/docker
+      - /home/jenkins/.ssh:/var/jenkins_home/.ssh
+      - /opt/containers/jenkins-backup/jobs:/var/jenkins_home/jobs
+      - /opt/containers/jenkins-backup/userContent:/var/jenkins_home/userContent
       - /etc/localtime:/etc/localtime
